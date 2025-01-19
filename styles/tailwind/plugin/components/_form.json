@@ -1,0 +1,11 @@
+{
+  ".form": {
+    "width": "100%",
+    "position": "relative",
+    "@apply flex-col-center": true
+  },
+  ".form-loading": {
+    "cursor": "wait",
+    "pointerEvents": "none"
+  }
+}

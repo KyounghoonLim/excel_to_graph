@@ -1,0 +1,52 @@
+@import "./reset.css";
+@import "./font.css";
+@import "./tailwind/tailwind.css";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: var(--max-height);
+  min-height: calc(var(--vh, 1vh) * 100);
+  position: relative;
+  overscroll-behavior: none auto;
+  scrollbar-width: none;
+}
+
+body {
+  user-select: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+video {
+  object-fit: contain !important;
+}
+
+dialog {
+  margin: 0;
+}
+
+textarea:disabled {
+  opacity: 1;
+}
+
+iframe {
+  display: none;
+}
+
+#modal {
+  z-index: 50;
+}
+
+#overlay {
+  z-index: 100;
+}
+
+/* scrollbar */
+*::-webkit-scrollbar, *::-webkit-scrollbar-track {
+  display: none;
+}

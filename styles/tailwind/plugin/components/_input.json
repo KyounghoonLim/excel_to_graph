@@ -1,0 +1,92 @@
+{
+  ".input-primary": {
+    "width": "100%",
+    "height": "50px",
+    "padding": "0",
+    "borderRadius": "20px",
+    "display": "flex",
+    "alignItems": "center",
+    "color": "black",
+    "backgroundColor": "transparent",
+    "@apply typograph-16": true,
+    "&::placeholder": {
+      "@apply text-text-placeholder-000": true
+    },
+    "&:focus": {
+      "outline": "none",
+      "@apply caret-neutral-700": true
+    },
+    "&[type='date']": {
+      "position": "relative",
+      "cursor": "pointer",
+      "&:not(:focus):invalid": {
+        "&::-webkit-datetime-edit-text, &::-webkit-datetime-edit-month-field, &::-webkit-datetime-edit-day-field, &::-webkit-datetime-edit-year-field": {
+          "-webkit-appearance": "none",
+          "display": "none"
+        }
+      },
+      "&:before": {
+        "content": "attr(data-placeholder)",
+        "width": "100%",
+        "@apply text-text-placeholder-000": true
+      },
+      "&:valid::before": {
+        "display": "none"
+      },
+      "&::-webkit-calendar-picker-indicator": {
+        "position": "absolute",
+        "left": 0,
+        "top": 0,
+        "width": "100%",
+        "height": "100%",
+        "background": "transparent",
+        "color": "transparent",
+        "cursor": "pointer"
+      }
+    }
+  },
+  ".input-search-container": {
+    "width": "800px",
+    "height": "50px",
+    "padding": "0 24px",
+    "borderRadius": "25px",
+    "@apply bg-bg-light": true,
+    "@apply flex-row-start": true,
+    "@apply gap-3": true
+  },
+  ".input-checkbox-container": {
+    "width": "100%",
+    "height": "40px",
+    "@apply typograph-14": true,
+    "@apply flex-row-start": true,
+    "& > label": {
+      "width": "100%",
+      "height": "100%",
+      "gap": "8px",
+      "cursor": "pointer",
+      "@apply flex-row-start": true
+    },
+    "& > label > input[type='checkbox']": {
+      "display": "none"
+    },
+    "& > label::before": {
+      "content": "''",
+      "display": "block",
+      "width": "20px",
+      "height": "20px",
+      "border": "1px #F0F0F0 solid",
+      "borderRadius": "4px",
+      "backgroundColor": "white"
+    },
+    "& > label:has(input[type='checkbox']:checked)": {
+      "&::before": {
+        "backgroundColor": "#4BBC69",
+        "backgroundImage": "url('/icons/icon_checked.svg')",
+        "backgroundPosition": "center",
+        "backgroundRepeat": "no-repeat",
+        "backgroundSize": "calc(100% - 4px) calc(100% - 4px)"
+      },
+      "fontWeight": "bold"
+    }
+  }
+}

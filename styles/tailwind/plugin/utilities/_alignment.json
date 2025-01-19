@@ -1,0 +1,26 @@
+{
+  ".flex-row-center": {
+    "display": "flex",
+    "flex-direction": "row",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  ".flex-row-start": {
+    "display": "flex",
+    "flex-direction": "row",
+    "justifyContent": "start",
+    "alignItems": "center"
+  },
+  ".flex-col-center": {
+    "display": "flex",
+    "flex-direction": "column",
+    "justifyContent": "center",
+    "alignItems": "center"
+  },
+  ".flex-col-start": {
+    "display": "flex",
+    "flex-direction": "column",
+    "justifyContent": "start",
+    "alignItems": "center"
+  }
+}

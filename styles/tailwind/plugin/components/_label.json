@@ -1,0 +1,12 @@
+{
+  ".label": {
+    "width": "100%",
+    "display": "flex",
+    "flexDirection": "column",
+    "justifyContent": "center",
+    "alignItems": "start",
+    "gap": "6px",
+    "@apply typograph-14": true,
+    "@apply text-text-label-100": true
+  }
+}

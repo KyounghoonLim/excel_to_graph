@@ -1,0 +1,20 @@
+{
+  ".typedJs": {
+    "whiteSpace": "pre-line",
+    "display": "inline",
+    "wordBreak": "keep-all",
+    "&::after": {
+      "content": "'|'",
+      "verticalAlign": "top",
+      "fontFamily": "Inter",
+      "fontWeight": "400"
+    },
+    "&[data-type-state='true']::after": {
+      "visibility": "hidden"
+    },
+    "&[data-type-state='false']::after": {
+      "visibility": "visible",
+      "@apply animate-typed-cursor": true
+    }
+  }
+}

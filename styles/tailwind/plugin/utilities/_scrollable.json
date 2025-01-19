@@ -1,0 +1,32 @@
+{
+  ".scrollable": {
+    "height": "calc(100% + 1px)",
+    "overflow": "hidden",
+    "paddingRight": "12px"
+  },
+  ".scrollable:hover": {
+    "overflowY": "scroll",
+    "paddingRight": "0px"
+  },
+  ".scrollable::-webkit-scrollbar": {
+    "width": "12px",
+    "backgroundColor": "transparent",
+    "position": "absolute",
+    "right": "0"
+  },
+  ".scrollable::-webkit-scrollbar-thumb": {
+    "borderRadius": "100px",
+    "backgroundColor": "#d9d9d9",
+    "backgroundClip": "padding-box",
+    "border": "4px solid transparent"
+  },
+  ".scrollable::-webkit-scrollbar-button": {
+    "display": "none"
+  },
+  ".no-overscroll": {
+    "overscrollBehavior": "none"
+  },
+  ".hide-scrollbar::-webkit-scrollbar": {
+    "display": "none"
+  }
+}

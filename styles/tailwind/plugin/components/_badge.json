@@ -1,0 +1,14 @@
+{
+  ".badge": {
+    "padding": "5.5px 16px",
+    "gap": "8px",
+    "borderRadius": "16px",
+    "maxWidth": "150px",
+    "color": "black",
+    "@apply typograph-14": true,
+    "@apply bg-bg-light": true,
+    "@apply flex-row-center": true,
+    "@apply no-auto-size": true,
+    "@apply truncate": true
+  }
+}

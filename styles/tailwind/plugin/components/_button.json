@@ -1,0 +1,107 @@
+{
+  ".button-primary": {
+    "width": "100%",
+    "height": "56px",
+    "padding": "14px 16px",
+    "borderRadius": "20px",
+    "whiteSpace": "nowrap",
+    "gap": "8px",
+    "@apply flex-row-center": true,
+    "@apply bg-button-primary-default": true,
+    "@apply text-neutral-000": true,
+    "@apply typograph-16": true,
+    "@apply font-bold": true,
+    "&:hover": {
+      "@apply bg-button-primary-hover": true
+    },
+    "&:disabled": {
+      "cursor": "not-allowed",
+      "pointerEvents": "none",
+      "@apply bg-button-primary-disabled": true
+    }
+  },
+  ".button-secondary": {
+    "width": "auto",
+    "height": "auto",
+    "padding": "5.5px 16px",
+    "borderRadius": "16px",
+    "whiteSpace": "nowrap",
+    "color": "black",
+    "backgroundColor": "white",
+    "border": "1px solid #F0F0F0",
+    "@apply flex-row-center": true,
+    "@apply typograph-14": true,
+    "&:hover": {
+      "@apply bg-neutral-100": true
+    },
+    "&:disabled": {
+      "cursor": "not-allowed",
+      "@apply bg-neutral-400": true
+    }
+  },
+  ".button-login": {
+    "width": "100%",
+    "height": "50px",
+    "borderRadius": "20px",
+    "whiteSpace": "nowrap",
+    "gap": "8px",
+    "@apply flex-row-center": true,
+    "@apply bg-neutral-000": true,
+    "@apply text-neutral-900": true,
+    "@apply typograph-14": true,
+    "&:hover": {
+      "@apply bg-neutral-100": true
+    },
+    "&:disabled": {
+      "cursor": "not-allowed",
+      "@apply bg-neutral-400": true
+    }
+  },
+  ".button-circled": {
+    "width": "54px",
+    "height": "54px",
+    "borderRadius": "50%",
+    "flexShrink": "0",
+    "@apply flex-row-center": true
+  },
+  ".button-guide": {
+    "padding": "6px 10px 6px 8px",
+    "@apply flex-row-center": true,
+    "gap": "2px",
+    "@apply text-@-neutral-000": true,
+    "@apply typograph-13": true,
+    "@apply border-01": true,
+    "borderRadius": "50px",
+    "borderColor": "#FFFFFF66",
+    "boxShadow": "0px 4px 10px 0px #0000000F",
+    "&:hover": {
+      "backgroundColor": "#0000001F"
+    },
+    "&:disabled": {
+      "opacity": "40%",
+      "pointerEvents": "none"
+    },
+    "&::before": {
+      "content": "url('/static/icon_help_16.svg')",
+      "width": "16px",
+      "height": "16px",
+      "display": "block",
+      "flexShrink": "0"
+    }
+  },
+  ".button-underlined": {
+    "height": "fit-content",
+    "borderRadius": "4px",
+    "opacity": "80%",
+    "@apply text-@-neutral-000": true,
+    "@apply typograph-13": true,
+    "@apply underline": true,
+    "&:hover": {
+      "@apply bg-[#0000001F]": true
+    },
+    "&:disabled": {
+      "opacity": "40%",
+      "pointerEvents": "none"
+    }
+  }
+}

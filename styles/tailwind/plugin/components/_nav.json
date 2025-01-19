@@ -1,0 +1,23 @@
+{
+  ".NAV": {
+    "width": "100%",
+    "height": "50px",
+    "margin": "0 auto",
+    "padding": "0",
+    "fontWeight": "700",
+    "backgroundColor": "white",
+    "@apply flex-row-center": true,
+    "@apply no-auto-size": true,
+    "@apply z-nav": true,
+    "& svg": {
+      "cursor": "pointer"
+    }
+  },
+  ".NAV-CONTENT": {
+    "width": "880px",
+    "height": "50px",
+    "display": "flex",
+    "justifyContent": "space-between",
+    "alignItems": "center"
+  }
+}

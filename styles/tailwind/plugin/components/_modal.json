@@ -1,0 +1,25 @@
+{
+  ".modal-background": {
+    "width": "100vw",
+    "position": "fixed",
+    "top": "0px",
+    "left": "0px",
+    "backgroundColor": "#00000066",
+    "@apply h-dscreen": true,
+    "@apply flex-row-center": true
+  },
+  ".modal-container": {
+    "padding": "32px 48px",
+    "borderRadius": "12px",
+    "margin": "auto auto",
+    "gap": "16px",
+    "@apply flex-col-start": true,
+    "@apply bg-bg-light": true
+  },
+  ".modal-header": {
+    "width": "100%",
+    "height": "44px",
+    "position": "relative",
+    "@apply flex-row-center": true
+  }
+}

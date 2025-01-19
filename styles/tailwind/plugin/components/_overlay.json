@@ -1,0 +1,26 @@
+{
+  ".overlay": {
+    "width": "100vw",
+    "height": "100vh",
+    "position": "fixed",
+    "top": "0",
+    "left": "0",
+    "@apply z-overlay": true
+  },
+  ".loading-overlay": {
+    "@apply overlay": true,
+    "@apply flex-row-center": true,
+    "cursor": "wait",
+    "width": "100%",
+    "height": "100%",
+    "@apply bg-neutral-300": true,
+    "&::after": {
+      "content": "''",
+      "width": "100px",
+      "height": "100px",
+      "backgroundImage": "url('/images/image_loading_spinner_colored.webp')",
+      "backgroundPosition": "center",
+      "backgroundSize": "contain"
+    }
+  }
+}

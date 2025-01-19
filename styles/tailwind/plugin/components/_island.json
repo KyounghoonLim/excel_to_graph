@@ -1,0 +1,8 @@
+{
+  ".island": {
+    "width": "300px",
+    "height": "400px",
+    "backgroundColor": "white",
+    "padding": "16px"
+  }
+}

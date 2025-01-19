@@ -1,0 +1,82 @@
+{
+  ".image-uploader": {
+    "width": "100px",
+    "height": "100px",
+    "borderRadius": "50%",
+    "display": "flex",
+    "position": "relative",
+    "margin": "0 auto",
+    "cursor": "pointer",
+    "@apply bg-neutral-000": true,
+    "& img": {
+      "width": "100%",
+      "height": "100%",
+      "borderRadius": "50%",
+      "backgroundPosition": "center",
+      "backgroundSize": "cover",
+      "@apply no-auto-size": true
+    },
+    "& input": {
+      "display": "none"
+    }
+  },
+  ".image-uplaoder-multiple-container": {
+    "width": "100%",
+    "display": "flex",
+    "alignItems": "center",
+    "flexWrap": "nowrap",
+    "gap": "12px",
+    "position": "relative",
+    "overflow": "auto",
+    "padding": "6px 0",
+    "@apply hide-scrollbar": true,
+    "@apply no-auto-size": true,
+    "& img": {
+      "width": "100%",
+      "height": "100%",
+      "borderRadius": "12px",
+      "backgroundPosition": "center",
+      "backgroundSize": "cover",
+      "@apply no-auto-size": true
+    },
+    "& input": {
+      "display": "none"
+    }
+  },
+  ".image-uploader-multiple": {
+    "width": "80px",
+    "height": "80px",
+    "display": "flex",
+    "position": "sticky",
+    "left": 0,
+    "cursor": "pointer",
+    "borderRadius": "12px",
+    "zIndex": 2,
+    "@apply bg-bg-light": true,
+    "@apply no-auto-size": true
+  },
+  ".image-uploader-item": {
+    "width": "80px",
+    "height": "80px",
+    "position": "relative",
+    "borderRadius": "12px",
+    "display": "flex",
+    "cursor": "pointer",
+    "@apply no-auto-size": true,
+    ".image-uploader-item-remove": {
+      "width": "28px",
+      "height": "28px",
+      "position": "absolute",
+      "top": "-6px",
+      "right": "-8px",
+      "backgroundPosition": "center",
+      "backgroundColor": "black",
+      "borderRadius": "50%",
+      "zIndex": 2,
+      "@apply flex-row-center": true,
+      "&:hover": {
+        "@apply bg-neutral-800": true
+      }
+    }
+  }
+}

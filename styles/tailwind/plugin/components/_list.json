@@ -1,0 +1,24 @@
+{
+  ".list": {
+    "width": "100%",
+    "display": "flex",
+    "flexDirection": "column",
+    "@apply hide-scrollbar": true,
+    "& li": {
+      "listStyleType": "none"
+    },
+    ":last-of-type .list-item": {
+      "borderStyle": "none"
+    }
+  },
+  ".list-item": {
+    "width": "100%",
+    "display": "flex !important",
+    "alignItems": "center",
+    "gap": "8px",
+    "padding": "12px 0px",
+    "borderBottom": "1px",
+    "borderStyle": "solid",
+    "@apply border-neutral-100": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  ".float-search-options": {
+    "width": "240px",
+    "height": "auto",
+    "position": "sticky",
+    "top": "32px",
+    "alignSelf": "start",
+    "backgroundColor": "white",
+    "borderRadius": "8px",
+    "overflow": "hidden",
+    "@apply flex-col-start": true,
+    "& *": {
+      "@apply no-auto-size": true
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "fade-in": "fade-in 0.5s ease-in-out forwards",
+  "fade-out": "fade-out 0.5s ease-in-out forwards",
+  "fade-in-out": "fade-in-out 2.5s ease-in-out forwards",
+  "select-open": "select-open 0.125s ease-in-out forwards",
+  "select-close": "select-close 0.125s ease-in-out forwards",
+  "spin-arrow": "spin-arrow 0.15s linear forwards",
+  "spin-arrow-reverse": "spin-arrow-reverse 0.15s linear forwards",
+  "drop-options": "drop-options 0.15s linear forwards",
+  "drop-options-reverse": "drop-options-reverse 0.15s linear forwards",
+  "bottomsheet-open": "bottomsheet-open 0.2s ease-in-out forwards",
+  "bottomsheet-close": "bottomsheet-close 0.2s ease-in-out forwards",
+  "shimmer": "shimmer 3s infinite",
+  "typed-cursor": "typed-cursor 1s step-end infinite"
+}

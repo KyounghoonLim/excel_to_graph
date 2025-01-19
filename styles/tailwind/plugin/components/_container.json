@@ -1,0 +1,25 @@
+{
+  ".APP-CONTAINER": {
+    "width": "100vw",
+    "height": "auto",
+    "position": "relative",
+    "overflow": "auto",
+    "@apply h-dscreen": true,
+    "@apply flex-col-start": true
+  },
+  ".PAGE-CONTAINER": {
+    "width": "100vw",
+    "height": "auto",
+    "position": "relative",
+    "@apply flex-col-start": true
+  },
+  ".CONTENT-CONTAINER": {
+    "width": "100%",
+    "height": "100%",
+    "margin": "0 auto",
+    "padding": "24px",
+    "position": "relative",
+    "flexShrink": 0,
+    "@apply flex-col-center": true
+  }
+}

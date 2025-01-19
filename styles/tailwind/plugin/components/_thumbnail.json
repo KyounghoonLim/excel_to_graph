@@ -1,0 +1,16 @@
+{
+  ".thumbnail-primary": {
+    "aspectRatio": "1 / 1",
+    "backgroundPosition": "center",
+    "backgroundSize": "cover",
+    "borderRadius": "4px",
+    "@apply no-auto-size": true
+  },
+  ".thumbnail-profile": {
+    "@apply thumbnail-primary": true,
+    "borderRadius": "50%",
+    "&[data-exist='false']": {
+      "@apply bg-neutral-200": false
+    }
+  }
+}

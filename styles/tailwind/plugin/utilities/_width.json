@@ -1,0 +1,14 @@
+{
+  ".w-half": {
+    "width": "50%"
+  },
+  ".w-quarter": {
+    "width": "25%"
+  },
+  ".max-w-half": {
+    "maxWidth": "50%"
+  },
+  ".max-w-quarter": {
+    "maxWidth": "25%"
+  }
+}

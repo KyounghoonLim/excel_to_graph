@@ -1,0 +1,8 @@
+{
+  ".gradient-basic": {
+    "background": "linear-gradient(#F4F4F5, #EEEFF0)"
+  },
+  ".gradient-onboarding": {
+    "background": "linear-gradient(#9472F4, #D9A8FF)"
+  }
+}

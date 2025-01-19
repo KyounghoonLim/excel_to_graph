@@ -1,0 +1,46 @@
+{
+  ".table-primary": {
+    "width": "auto",
+    "height": "auto",
+    "minWidth": "100%",
+    "padding": "4px 0",
+    "> tbody": {
+      "@apply flex-col-center": true
+    }
+  },
+  ".table-primary-row": {
+    "width": "auto",
+    "height": "37px",
+    "minWidth": "100%",
+    "position": "relative",
+    "@apply typograph-16": true,
+    "@apply flex-row-start": true,
+    " *": {
+      "backgroundColor": "white",
+      "borderRight": "1px",
+      "borderStyle": "solid",
+      "@apply border-neutral-100": true
+    }
+  },
+  ".table-primary-head": {
+    "width": "120px",
+    "height": "100%",
+    "fontWeight": "bold",
+    "position": "sticky",
+    "top": 0,
+    "left": 0,
+    "@apply flex-row-center": true
+  },
+  ".table-primary-cell": {
+    "minWidth": "88px",
+    "height": "100%",
+    "@apply auto-size": true,
+    "@apply flex-row-center": true,
+    "&[data-index='0']": {
+      "fontWeight": "bold"
+    },
+    "&:last-of-type": {
+      "borderStyle": "none"
+    }
+  }
+}

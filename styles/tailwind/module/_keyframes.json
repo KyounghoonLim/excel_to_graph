@@ -1,0 +1,48 @@
+{
+  "fade-in": {
+    "0%": { "opacity": 0 },
+    "100%": { "opacity": 1 }
+  },
+  "fade-out": {
+    "0%": { "opacity": 1 },
+    "100%": { "opacity": 0 }
+  },
+  "fade-in-out": {
+    "0%": { "opacity": 0 },
+    "10%": { "opacity": 1 },
+    "90%": { "opacity": 1 },
+    "100%": { "opacity": 0 }
+  },
+  "select-open": {
+    "from": { "transform": "translateY(-100%)" },
+    "to": { "transform": "translateY(0)" }
+  },
+  "select-close": {
+    "from": { "transform": "translateY(0)" },
+    "to": { "transform": "translateY(-100%)" }
+  },
+  "spin-arrow": {
+    "from": { "transform": "rotate(0deg)" },
+    "to": { "transform": "rotate(180deg)" }
+  },
+  "spin-arrow-reverse": {
+    "from": { "transform": "rotate(180deg)" },
+    "to": { "transform": "rotate(0deg)" }
+  },
+  "bottomsheet-open": {
+    "from": { "transform": "translateY(100%)" },
+    "to": { "transform": "translateY(0)" }
+  },
+  "bottomsheet-close": {
+    "from": { "transform": "translateY(0)" },
+    "to": { "transform": "translateY(100%)" }
+  },
+  "shimmer": {
+    "100%": {
+      "transform": "translateX(100%)"
+    }
+  },
+  "typed-cursor": {
+    "50%": { "opacity": 0 }
+  }
+}
