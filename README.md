@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Excel to Graph Beta
 
-## Getting Started
+정해진 엑셀 파일의 규격에 따라 데이터를 입력하고, 해당 데이터를 토대로 도면을 그립니다.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+추가 설명
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<data sheet>
+데이터 규격 (엑셀 규격)
+A행: 단 수
+B행: 단 별 shell 갯수
+C행: 해당 단의 shell 의 세로 길이
+D행: 해당 단의 shell 의 가로 길이
+E행: 도면 타입
+  도면 타입: 1 || 2
+    - 1번 타입: 2쌍 지그재그 구조
+    - 2번 타입: 3쌍 지그재그 구조
+F행: 교차비율
+  해당 도면 타입의 쌍에 포함된 인접 단의 빗겨나감의 정도
+    - 예: 0.33 인 경우 D행의 가로길이 * 0.33 만큼의 크기가 shift 되어 그려짐
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<result sheet>
+행에 따른 구별은 없으며, 전부 좌표를 나타냄.
+단, 좌표의 읽는 방법의 차이가 있음.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1,000 단위 좌표
+- 천의 자리, 백의 자리: 몇 단에 위치해 있는지 표시
+- 십의 자리, 일의 자리: 해당 shell 의 세로 크기를 250 으로 나눈 구간에서 몇 번째에 위치해있는지 표시
 
-## Learn More
+100,000 단위 좌표
+- 십만의 자리, 만의 자리: 몇 단에 위치해 있는지 표시
+- 천의 자리, 백의 자리, 십의 자리, 일의 자리: 해당 shell 의 가로 크기를 250 으로 나눈 구간에서 몇 번째에 위치해있는지 표시
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* 필름의 크기는 100 x 250 으로 나타냄
