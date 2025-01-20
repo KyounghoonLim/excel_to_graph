@@ -17,66 +17,20 @@ export function useFile(maxLength: number = 5) {
   const addFile = useCallback(
     async (targetFile: File) => {
       const targetBuffer = await fileUploadHelper.uploadFileAsBlob(targetFile)
-
-      setFiles((_) => {
-        const _files = [..._]
-        if (!_files[maxLength - 1]) {
-          for (let i = 0; i < maxLength; i++) {
-            if (!_files[i]) {
-              _files[i] = targetFile
-              break
-            }
-          }
-        }
-        return _files
-      })
-      setBuffers((_) => {
-        const _buffers = [..._]
-        if (!_buffers[maxLength - 1]) {
-          for (let i = 0; i < maxLength; i++) {
-            if (!_buffers[i]) {
-              _buffers[i] = targetBuffer
-              break
-            }
-          }
-        }
-        return _buffers
-      })
+      setFiles((tempFiles) => tempFiles.arrayPushedItem(targetFile))
+      if (targetBuffer) {
+        // setBuffers((tempBuffers) => tempBuffers.arrayPushedItem(targetBuffer))
+      }
     },
-    [maxLength, fileUploadHelper]
+    [fileUploadHelper]
   )
 
-  const removeFile = useCallback(
-    (index?: number) => {
-      setFiles((_files) => {
-        if (index) _files[index] = null
-        else {
-          for (let i = maxLength - 1; i > -1; i--) {
-            if (_files[i]) {
-              _files[i] = null
-            }
-            break
-          }
-        }
+  const removeFile = useCallback((index?: number) => {
+    setFiles((tempFiles) => tempFiles.arrayPopedIndex(index))
+    // setBuffers((tempBuffers) => tempBuffers.arrayPopedIndex(index))
+  }, [])
 
-        return _files
-      })
-      setBuffers((_buffers) => {
-        if (index) _buffers[index] = null
-        else {
-          for (let i = maxLength - 1; i > -1; i--) {
-            if (_buffers[i]) {
-              _buffers[i] = null
-            }
-            break
-          }
-        }
-
-        return _buffers
-      })
-    },
-    [maxLength]
-  )
+  console.log(files)
 
   return { files, buffers, addFile, removeFile }
 }
