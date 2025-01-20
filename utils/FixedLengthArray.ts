@@ -5,6 +5,10 @@ export class FixedLengthArray<T = unknown> extends Array<T | null> {
     Object.seal(this)
   }
 
+  isExist() {
+    return this.some(Boolean)
+  }
+
   arrayPushedItem(item: T): FixedLengthArray<T> {
     if (this[this.length - 1]) {
       console.warn("FixedLengthArray can't take elements more than given length")

@@ -7,7 +7,7 @@ import functions from './styles/tailwind/plugin/functions'
 import components from './styles/tailwind/plugin/components'
 
 export default {
-  content: ['./{app,components,providers,hooks}/**/*.{jsx,tsx,mdx}'],
+  content: ['./{app,components,providers,hooks}/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       ...modules,

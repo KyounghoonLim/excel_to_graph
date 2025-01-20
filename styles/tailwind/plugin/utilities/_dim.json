@@ -1,13 +1,14 @@
 {
   ".dim": {
-    "position": "relative",
-    "&::before": {
+    "&::after": {
       "content": "''",
       "width": "100%",
       "height": "100%",
       "position": "absolute",
-      "zIndex": 2,
-      "@apply bg-neutral-100": true
+      "backgroundColor": "#00000066",
+      "borderRadius": "inherit",
+      "@apply flex-row-center": true,
+      "@apply z-10": true
     }
   }
 }

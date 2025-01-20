@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from 'react'
 import { FileUploadHelper } from 'services/fileUploadHelper'
-import { FixedLengthArray } from 'utils/fixedLengthArray'
+import { FixedLengthArray } from 'utils/FixedLengthArray'
 
 /**
  * file (UI 용) 과 ArrayBuffer (엑셀용) 두 개를 동시 관리
@@ -19,7 +19,7 @@ export function useFile(maxLength: number = 5) {
       const targetBuffer = await fileUploadHelper.uploadFileAsBlob(targetFile)
       setFiles((tempFiles) => tempFiles.arrayPushedItem(targetFile))
       if (targetBuffer) {
-        // setBuffers((tempBuffers) => tempBuffers.arrayPushedItem(targetBuffer))
+        setBuffers((tempBuffers) => tempBuffers.arrayPushedItem(targetBuffer))
       }
     },
     [fileUploadHelper]
@@ -27,10 +27,8 @@ export function useFile(maxLength: number = 5) {
 
   const removeFile = useCallback((index?: number) => {
     setFiles((tempFiles) => tempFiles.arrayPopedIndex(index))
-    // setBuffers((tempBuffers) => tempBuffers.arrayPopedIndex(index))
+    setBuffers((tempBuffers) => tempBuffers.arrayPopedIndex(index))
   }, [])
-
-  console.log(files)
 
   return { files, buffers, addFile, removeFile }
 }

@@ -14,8 +14,9 @@ export function useDragDrop(onDrop?: DragHandler): { dragDropRef: RefCallback<HT
     ref.current?.classList.add('drag-over')
   }, [])
 
-  const dragleaveHandler = useCallback(() => {
-    ref.current?.classList.remove('drag-over')
+  const dragleaveHandler = useCallback((event: DragEvent) => {
+    if (ref.current?.contains(event.relatedTarget as Node)) return
+    else ref.current?.classList.remove('drag-over')
   }, [])
 
   const dropHandler = useCallback(
