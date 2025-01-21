@@ -1,5 +1,5 @@
-import { CanvasWrapper } from 'components/canvas/CanvasWrapper'
-import { FileList } from 'components/file/FileList'
+import { FileListContainer } from 'components/file/FileListContainer'
+import { GraphContainer } from 'components/graph/GraphContainer'
 import { ExcelProvider } from 'providers/ExcelProvider'
 import { FilesProvider } from 'providers/FilesProvider'
 
@@ -8,11 +8,9 @@ export default function HomePage() {
     <main className="PAGE-CONTAINER h-screen">
       <FilesProvider>
         <ExcelProvider>
-          <CanvasWrapper />
+          <GraphContainer />
         </ExcelProvider>
-        <section className="CONTENT-CONTAINER flex flex-col">
-          <FileList />
-        </section>
+        <FileListContainer />
       </FilesProvider>
     </main>
   )

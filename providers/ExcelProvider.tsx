@@ -16,25 +16,24 @@ export function ExcelProvider({ children }: PropsWithChildren) {
   const [excelMap] = useState<WeakMap<ArrayBuffer, Sheet>>(new WeakMap())
   const [selectedExcel, setSelectedExcel] = useState<Sheet | null>(null)
 
-  const { buffers, selected } = useContext(filesContext)
   const { getExcelSheets } = useExcel()
+  const { fileObjects, selectedIndex } = useContext(filesContext)
 
-  // FileProvider 에서 선택된 파일로 엑셀 Json 을 만들고, 해당 엑셀 데이터를 선택함 //
+  // FileProvider 에서 선택된 파일로 엑셀 JSON 을 만들고, 해당 엑셀 데이터를 선택함 //
   useLayoutEffect(() => {
-    const buffer = !selected && selected !== 0 ? null : buffers?.[selected]
+    const buffer = fileObjects?.[selectedIndex]?.buffer
 
-    if (!buffer) return
-    else if (excelMap.has(buffer)) {
-      const excelData = excelMap.get(buffer)!
+    if (!buffer) {
+      setSelectedExcel(null)
+    } else if (excelMap.has(buffer)) {
+      const excelData = excelMap.get(buffer)
       setSelectedExcel(excelData)
     } else {
       const excelData = getExcelSheets(buffer)
       excelMap.set(buffer, excelData)
       setSelectedExcel(excelData)
     }
-  }, [buffers, selected])
+  }, [fileObjects, selectedIndex])
 
-  return (
-    <excelContext.Provider value={{ excelMap, selectedExcel }}>{children}</excelContext.Provider>
-  )
+  return <excelContext.Provider value={{ excelMap, selectedExcel }}>{children}</excelContext.Provider>
 }

@@ -4,7 +4,7 @@
   "semi": false,
   "singleQuote": true,
   "parser": "typescript",
-  "printWidth": 100,
+  "printWidth": 120,
   "overrides": [
     {
       "files": ["*.json", "*.jsonc", "*.json5"],
