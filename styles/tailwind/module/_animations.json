@@ -4,6 +4,8 @@
   "fade-in-out": "fade-in-out 2.5s ease-in-out forwards",
   "select-open": "select-open 0.125s ease-in-out forwards",
   "select-close": "select-close 0.125s ease-in-out forwards",
+  "slide-in": "slide-in 0.25s ease-in-out forwards",
+  "slide-out": "slide-out 0.25s ease-in-out forwards",
   "spin-arrow": "spin-arrow 0.15s linear forwards",
   "spin-arrow-reverse": "spin-arrow-reverse 0.15s linear forwards",
   "drop-options": "drop-options 0.15s linear forwards",

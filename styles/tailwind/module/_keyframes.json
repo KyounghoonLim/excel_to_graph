@@ -21,6 +21,14 @@
     "from": { "transform": "translateY(0)" },
     "to": { "transform": "translateY(-100%)" }
   },
+  "slide-in": {
+    "from": { "transform": "translateX(-100%)" },
+    "to": { "transform": "translateY(0)" }
+  },
+  "slide-out": {
+    "from": { "transform": "translateX(0)" },
+    "to": { "transform": "translateX(-100%)" }
+  },
   "spin-arrow": {
     "from": { "transform": "rotate(0deg)" },
     "to": { "transform": "rotate(180deg)" }
