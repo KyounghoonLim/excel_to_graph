@@ -34,10 +34,13 @@ export function useDragDrop(onDrop?: DragHandler): { dragDropRef: RefCallback<HT
 
   const dragDropRef = useCallback<RefCallback<HTMLElement>>(
     (element: HTMLElement) => {
-      ref.current = element
-      ref.current?.addEventListener('dragover', dragoverHandler)
-      ref.current?.addEventListener('dragleave', dragleaveHandler)
-      ref.current?.addEventListener('drop', dropHandler)
+      if (ref.current) return
+      else {
+        ref.current = element
+        ref.current?.addEventListener('dragover', dragoverHandler)
+        ref.current?.addEventListener('dragleave', dragleaveHandler)
+        ref.current?.addEventListener('drop', dropHandler)
+      }
     },
     [dragoverHandler, dragleaveHandler, dropHandler]
   )
@@ -48,7 +51,7 @@ export function useDragDrop(onDrop?: DragHandler): { dragDropRef: RefCallback<HT
       ref.current?.removeEventListener('dragleave', dragleaveHandler)
       ref.current?.removeEventListener('drop', dropHandler)
     }
-  }, [dragoverHandler, dragleaveHandler, dropHandler])
+  }, [])
 
   return {
     dragDropRef,
