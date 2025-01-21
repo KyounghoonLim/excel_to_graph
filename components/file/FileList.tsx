@@ -36,7 +36,7 @@ export function FileList() {
           </div>
         </div>
         <button
-          className="absolute right-0 w-10 h-full flex-row-center bg-gray-100 hover:bg-gray-200"
+          className="absolute right-0 w-10 h-full flex-row-center bg-[#f3f3f3] hover:bg-[#e9e9e9]"
           onClick={() => setIsShow(false)}
           title="파일 리스트 닫기"
         >

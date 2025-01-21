@@ -7,7 +7,7 @@ export class ExcelReader {
     return read(data)
   }
 
-  sheetToJson(sheet: WorkSheet) {
-    return utils.sheet_to_json(sheet)
+  sheetToJson(sheet: WorkSheet): Array<unknown> {
+    return utils.sheet_to_json(sheet, { header: 1 })
   }
 }
