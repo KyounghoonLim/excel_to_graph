@@ -1,7 +1,6 @@
 'use client'
 
 import { useDragDrop } from 'hooks/useDragDrop'
-import { useExcel } from 'hooks/useExcel'
 import { useFile } from 'hooks/useFile'
 import {
   createContext,
@@ -66,15 +65,6 @@ export function FilesProvider({ children }: PropsWithChildren) {
       }
     }
   }, [files])
-
-  const { getSheet } = useExcel()
-
-  useLayoutEffect(() => {
-    if (!selected && selected !== 0) return
-    else {
-      console.log(getSheet(buffers[selected]!))
-    }
-  }, [selected])
 
   return (
     <div ref={dragDropRef} className="CONTENT-CONTAINER">

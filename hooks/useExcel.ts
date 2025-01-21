@@ -6,7 +6,7 @@ import { ExcelReader } from 'services/excelReader'
 export function useExcel() {
   const [excelReader] = useState<ExcelReader>(new ExcelReader())
 
-  const getSheet = useCallback(
+  const getExcelSheets = useCallback(
     (buffer: ArrayBuffer) => {
       const data = excelReader.readData(buffer)
       return data.Sheets
@@ -14,5 +14,5 @@ export function useExcel() {
     [excelReader]
   )
 
-  return { getSheet }
+  return { getExcelSheets }
 }
