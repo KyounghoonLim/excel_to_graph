@@ -20,15 +20,11 @@ export function Graph() {
     if (!selectedExcel) return
     else {
       graphRef.current = initGraph(canvasRef.current!, selectedFile?.name, selectedExcel)
-      console.log(graphRef.current)
       return () => {
         graphRef.current?.destroy()
       }
     }
   }, [selectedExcel])
-
-  console.log(selectedExcel)
-  console.log(selectedExcel?.data)
 
   return (
     <>

@@ -3,21 +3,27 @@
 import { Chart } from 'chart.js/auto'
 import { useCallback } from 'react'
 import zoomPlugin from 'chartjs-plugin-zoom'
-import dummyData from '@/@dummy/dummyData.json'
 import { tickCallback } from 'services/chart/tickCallback'
-import { getMaxLength } from 'services/chart/excelToGraphHelper'
+import { getMaxLength, getAnnotations, getDataSet } from 'services/chart/excelToGraphHelper'
 import { MyExcelDataType } from 'providers/ExcelProvider'
+import annotaionPlugin from 'chartjs-plugin-annotation'
+
+Chart.register(annotaionPlugin)
 
 export default function useGraph() {
   const initGraph = useCallback((canvas: HTMLCanvasElement, title?: string, excelData?: MyExcelDataType) => {
     const maxLength = getMaxLength(excelData?.data)
+    const annotations = getAnnotations(excelData?.data)
 
     return new Chart(canvas, {
       type: 'scatter',
-      plugins: [zoomPlugin],
+      plugins: [zoomPlugin, annotaionPlugin],
       options: {
         responsive: true,
         plugins: {
+          annotation: {
+            annotations,
+          },
           legend: {
             display: false,
           },
@@ -41,8 +47,8 @@ export default function useGraph() {
               enabled: true,
             },
             limits: {
-              x: { min: 0, max: maxLength.x },
-              y: { min: 0, max: maxLength.y },
+              x: { min: -1000, max: maxLength.x },
+              y: { min: -1000, max: maxLength.y },
             },
           },
         },
@@ -53,7 +59,7 @@ export default function useGraph() {
               maxTicksLimit: 25,
               callback: tickCallback,
             },
-            min: 500,
+            min: -1000,
             max: maxLength.x,
           },
           y: {
@@ -62,12 +68,14 @@ export default function useGraph() {
               maxTicksLimit: 25,
               callback: tickCallback,
             },
-            min: 500,
+            min: -1000,
             max: maxLength.y,
           },
         },
       },
-      data: dummyData,
+      data: {
+        datasets: getDataSet(excelData),
+      },
     })
   }, [])
 
