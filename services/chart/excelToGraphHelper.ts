@@ -49,7 +49,7 @@ export function getAnnotations(_: DataSheetType) {
           xMax: offset + width * (j + 1),
           yMin: y,
           yMax: y + height,
-          drawTime: 'beforeDatasetsDraw',
+          drawTime: 'beforeDraw',
           borderWidth: 4,
           borderColor: '#aaaaaa',
           borderJoinStyle: 'round',
@@ -68,17 +68,23 @@ export function getDataSet(_: MyExcelDataType) {
     {
       label: '기본수직',
       data: [],
-      backgroundColor: '#ff8cb1',
+      backgroundColor: '#ff8cb100',
+      radius: 0,
+      pointHitRadius: 0,
     },
     {
       label: '추가수직',
       data: [],
-      backgroundColor: '#63a9ff',
+      backgroundColor: '#63a9ff00',
+      radius: 0,
+      pointHitRadius: 0,
     },
     {
       label: '추가수평',
       data: [],
-      backgroundColor: '#03fca966',
+      backgroundColor: '#03fca96600',
+      radius: 0,
+      pointHitRadius: 0,
     },
   ]
   const data = sliceTitle<DataSheetType, DataSheetData>(_.data)
@@ -99,8 +105,6 @@ export function getDataSet(_: MyExcelDataType) {
         }
         return h
       })()
-
-      console.log(height)
 
       // 세로축으로 계산함 //
       const sum = tick * step

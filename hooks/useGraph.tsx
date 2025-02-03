@@ -7,6 +7,9 @@ import { tickCallback } from 'services/chart/tickCallback'
 import { getMaxLength, getAnnotations, getDataSet } from 'services/chart/excelToGraphHelper'
 import { MyExcelDataType } from 'providers/ExcelProvider'
 import annotaionPlugin from 'chartjs-plugin-annotation'
+import { drawPointPlugin } from 'services/chart/plugins/drawPointPlugin'
+import { backgroundPlugin } from 'services/chart/plugins/backgroundPlugin'
+import { titleBackgroundPlugin } from 'services/chart/plugins/titlePlugin'
 
 Chart.register(annotaionPlugin)
 
@@ -17,7 +20,7 @@ export default function useGraph() {
 
     return new Chart(canvas, {
       type: 'scatter',
-      plugins: [zoomPlugin, annotaionPlugin],
+      plugins: [zoomPlugin, annotaionPlugin, drawPointPlugin, backgroundPlugin, titleBackgroundPlugin],
       options: {
         responsive: true,
         plugins: {
@@ -35,6 +38,7 @@ export default function useGraph() {
             },
             color: 'black',
             padding: {
+              top: 30,
               bottom: 30,
             },
           },
@@ -61,6 +65,7 @@ export default function useGraph() {
             },
             min: -1000,
             max: maxLength.x,
+            backgroundColor: 'white',
           },
           y: {
             ticks: {
@@ -70,6 +75,7 @@ export default function useGraph() {
             },
             min: -1000,
             max: maxLength.y,
+            backgroundColor: 'white',
           },
         },
       },
