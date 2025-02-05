@@ -1,7 +1,5 @@
 import { Plugin, ScatterDataPoint } from 'chart.js'
 import { MyChart } from '../@types/MyChart'
-import { sliceTitle } from '../utils/sliceTitle'
-import { ResultSheetData, ResultSheetType } from '@/@types/my_excel_type'
 
 export const drawPointPlugin: Plugin = {
   id: 'customDrawPointPlugin',
@@ -9,7 +7,6 @@ export const drawPointPlugin: Plugin = {
     const ctx = chart.ctx
     const datasets = chart.data.datasets
     const { result } = chart.$excelData
-    const resultData = sliceTitle<ResultSheetType, ResultSheetData>(result)
 
     if (!chart.$customScatterRects) {
       chart.$customScatterRects = [] // ✅ 차트 객체에 데이터 저장 (초기화)
