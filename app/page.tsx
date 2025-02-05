@@ -1,6 +1,6 @@
 import { MyErrorComponent } from 'components/error/MyErrorComponent'
 import { FileListContainer } from 'components/file/FileListContainer'
-import { GraphContainer } from 'components/graph/GraphContainer'
+import { ChartContainer } from 'components/chart/ChartContainer'
 import { ErrorBoundary } from 'next/dist/client/components/error-boundary'
 import { ExcelProvider } from 'providers/ExcelProvider'
 import { FilesProvider } from 'providers/FilesProvider'
@@ -11,7 +11,7 @@ export default function HomePage() {
       <ErrorBoundary errorComponent={MyErrorComponent}>
         <FilesProvider>
           <ExcelProvider>
-            <GraphContainer />
+            <ChartContainer />
           </ExcelProvider>
           <FileListContainer />
         </FilesProvider>

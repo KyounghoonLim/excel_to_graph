@@ -2,24 +2,24 @@
 
 import { useContext, useLayoutEffect, useMemo, useRef } from 'react'
 import { Chart } from 'chart.js'
-import useGraph from 'hooks/useGraph'
+import { useChart } from 'hooks/useChart'
 import { excelContext } from 'providers/ExcelProvider'
 import { filesContext } from 'providers/FilesProvider'
 
-export function Graph() {
+export function MyChart() {
   const { fileObjects, selectedIndex } = useContext(filesContext)
   const { selectedExcel } = useContext(excelContext)
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const graphRef = useRef<Chart | null>(null)
-  const { initGraph } = useGraph()
+  const { initChart } = useChart()
 
   const selectedFile = useMemo(() => fileObjects[selectedIndex]?.file, [fileObjects, selectedIndex])
 
   useLayoutEffect(() => {
     if (!selectedExcel) return
     else {
-      graphRef.current = initGraph(canvasRef.current!, selectedFile?.name, selectedExcel)
+      graphRef.current = initChart(canvasRef.current!, selectedFile?.name, selectedExcel)
       return () => {
         graphRef.current?.destroy()
       }

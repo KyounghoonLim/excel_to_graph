@@ -1,6 +1,6 @@
 'use client'
 
-import { Chart } from 'chart.js/auto'
+import { Chart, layouts } from 'chart.js/auto'
 import { useCallback } from 'react'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import { tickCallback } from 'services/chart/utils/tickCallback'
@@ -17,8 +17,8 @@ import { tooltipFooterCallback, tooltipLabelCallback } from 'services/chart/util
 
 Chart.register(annotaionPlugin)
 
-export default function useGraph() {
-  const initGraph = useCallback((canvas: HTMLCanvasElement, title?: string, excelData?: MyExcelDataType) => {
+export function useChart() {
+  const initChart = useCallback((canvas: HTMLCanvasElement, title?: string, excelData?: MyExcelDataType) => {
     const maxLength = getMaxLength(excelData?.data)
     const annotations = getAnnotations(excelData?.data)
 
@@ -62,8 +62,8 @@ export default function useGraph() {
               enabled: true,
             },
             limits: {
-              x: { min: 0, max: maxLength.x },
-              y: { min: 0, max: maxLength.y },
+              x: { min: -1000, max: maxLength.x + 1000 },
+              y: { min: -1000, max: maxLength.y + 1000 },
             },
           },
         },
@@ -74,8 +74,11 @@ export default function useGraph() {
               maxTicksLimit: 25,
               callback: tickCallback,
             },
-            min: 0,
-            max: maxLength.x,
+            grid: {
+              color: '#cccccc33',
+            },
+            min: -1000,
+            max: maxLength.x + 1000,
             backgroundColor: 'white',
           },
           y: {
@@ -84,8 +87,11 @@ export default function useGraph() {
               maxTicksLimit: 25,
               callback: tickCallback,
             },
-            min: 0,
-            max: maxLength.y,
+            grid: {
+              color: '#cccccc33',
+            },
+            min: -1000,
+            max: maxLength.y + 1000,
             backgroundColor: 'white',
           },
         },
@@ -97,5 +103,5 @@ export default function useGraph() {
     })
   }, [])
 
-  return { initGraph }
+  return { initChart }
 }

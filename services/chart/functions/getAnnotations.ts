@@ -25,7 +25,7 @@ export function getAnnotations(_: DataSheetType) {
           yMax: y + height,
           drawTime: 'beforeDraw',
           borderWidth: 4,
-          borderColor: '#aaaaaa',
+          borderColor: '#444444',
           borderJoinStyle: 'round',
           backgroundColor: 'transparent',
         }
