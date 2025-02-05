@@ -4,7 +4,7 @@ import { MyExcelDataType } from 'providers/ExcelProvider'
 import { sliceTitle } from '../utils/sliceTitle'
 import { getGridOffset } from '../utils/getGridOffset'
 
-export function getDataSet(_: MyExcelDataType) {
+export function getDataset(_: MyExcelDataType) {
   const dataSet: ChartDataset[] = [
     {
       label: '기본수직',
@@ -38,10 +38,10 @@ export function getDataSet(_: MyExcelDataType) {
     for (let j = 0; j < resultData.length; j++) {
       if (!resultData[j][i]) continue
       else {
-        const obj = (resultData[j][i] as string).split('#').map((ele) => Number(ele))
+        const coordinate = (resultData[j][i] as string).split('#').map(Number)
 
-        const floor = obj[0] - 1 // 데이터상 floor 는 1부터 있으므로
-        const left = obj[1] - 1 // 데이터상 첫 번째는 프로그래밍적으로 0번째
+        const floor = coordinate[0] - 1 // 데이터상 floor 는 1부터 있으므로
+        const left = coordinate[1] - 1 // 데이터상 첫 번째는 프로그래밍적으로 0번째
 
         const height = (() => {
           let h = 0
@@ -56,7 +56,7 @@ export function getDataSet(_: MyExcelDataType) {
         let x, y
         // 세로축 기준 //
         if (i < 2) {
-          const top = obj[2] - 1 // 데이터상 첫 번째는 프로그래밍적으로 0번째
+          const top = coordinate[2] - 1 // 데이터상 첫 번째는 프로그래밍적으로 0번째
           x = left * data[i][3] + offset
           y = tick * top + height
         }
@@ -65,7 +65,7 @@ export function getDataSet(_: MyExcelDataType) {
           x = left * tick + offset
           y = height
         }
-        dataSet[i].data.push({ x, y, offset })
+        dataSet[i].data.push({ x, y, offset, coordinate })
       }
     }
   }

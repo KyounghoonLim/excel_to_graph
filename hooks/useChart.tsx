@@ -1,10 +1,9 @@
 'use client'
 
-import { Chart, layouts } from 'chart.js/auto'
+import { Chart } from 'chart.js/auto'
 import { useCallback } from 'react'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import { tickCallback } from 'services/chart/utils/tickCallback'
-import { getDataSet } from 'services/chart/functions/getDataSet'
 import { MyExcelDataType } from 'providers/ExcelProvider'
 import annotaionPlugin from 'chartjs-plugin-annotation'
 import { drawPointPlugin } from 'services/chart/plugins/drawPointPlugin'
@@ -14,21 +13,33 @@ import { getAnnotations } from 'services/chart/functions/getAnnotations'
 import { getMaxLength } from 'services/chart/functions/getMaxLength'
 import { clickHandler } from 'services/chart/functions/clickHandler'
 import { tooltipFooterCallback, tooltipLabelCallback } from 'services/chart/utils/tooltipCallback'
+import { getDataset } from 'services/chart/functions/getDataset'
+import { drawDistancePlugin } from 'services/chart/plugins/drawDistancePlugin'
+import { MyChart } from 'services/chart/@types/MyChart'
 
 Chart.register(annotaionPlugin)
+Chart.register(drawDistancePlugin)
 
 export function useChart() {
   const initChart = useCallback((canvas: HTMLCanvasElement, title?: string, excelData?: MyExcelDataType) => {
     const maxLength = getMaxLength(excelData?.data)
     const annotations = getAnnotations(excelData?.data)
 
-    return new Chart(canvas, {
+    const chart: MyChart = new Chart(canvas, {
       type: 'scatter',
-      plugins: [zoomPlugin, annotaionPlugin, drawPointPlugin, backgroundPlugin, titleBackgroundPlugin],
+      plugins: [
+        zoomPlugin,
+        annotaionPlugin,
+        drawPointPlugin,
+        drawDistancePlugin,
+        backgroundPlugin,
+        titleBackgroundPlugin,
+      ],
       options: {
         responsive: true,
         plugins: {
           tooltip: {
+            //@ts-ignore
             position: 'custom',
             callbacks: {
               label: tooltipLabelCallback,
@@ -98,9 +109,14 @@ export function useChart() {
         onClick: clickHandler,
       },
       data: {
-        datasets: getDataSet(excelData),
+        datasets: getDataset(excelData),
       },
     })
+
+    chart.$excelData = excelData
+    chart.$graphStyle = excelData.data[1][4]
+
+    return chart
   }, [])
 
   return { initChart }

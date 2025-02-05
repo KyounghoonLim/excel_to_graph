@@ -1,9 +1,9 @@
 'use client'
 
 import dynamic from 'next/dynamic'
-import { MyChart } from 'components/chart/MyChart'
+import { ExcelChart } from 'components/chart/ExcelChart'
 
-const Chart = dynamic(() => Promise.resolve(MyChart), {
+const Chart = dynamic(() => Promise.resolve(ExcelChart), {
   ssr: false,
 })
 

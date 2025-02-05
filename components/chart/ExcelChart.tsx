@@ -6,7 +6,7 @@ import { useChart } from 'hooks/useChart'
 import { excelContext } from 'providers/ExcelProvider'
 import { filesContext } from 'providers/FilesProvider'
 
-export function MyChart() {
+export function ExcelChart() {
   const { fileObjects, selectedIndex } = useContext(filesContext)
   const { selectedExcel } = useContext(excelContext)
 

@@ -1,17 +1,20 @@
 import { Plugin, ScatterDataPoint } from 'chart.js'
 import { MyChart } from '../@types/MyChart'
+import { sliceTitle } from '../utils/sliceTitle'
+import { ResultSheetData, ResultSheetType } from '@/@types/my_excel_type'
 
 export const drawPointPlugin: Plugin = {
   id: 'customDrawPointPlugin',
   beforeDraw: (chart: MyChart) => {
     const ctx = chart.ctx
     const datasets = chart.data.datasets
+    const { result } = chart.$excelData
+    const resultData = sliceTitle<ResultSheetType, ResultSheetData>(result)
 
     if (!chart.$customScatterRects) {
       chart.$customScatterRects = [] // ✅ 차트 객체에 데이터 저장 (초기화)
     }
     chart.$customScatterRects.length = 0 // ✅ 매 프레임마다 최신 데이터 유지
-
     ctx.save()
 
     const zoomLevel = chart.getZoomLevel()
@@ -39,16 +42,23 @@ export const drawPointPlugin: Plugin = {
             ctx.strokeRect(x - width / 2, y - height, width, height)
           }
         }
-
         chart.$customScatterRects.push({
-          x: x - width / 2,
-          y: y - height,
+          x: {
+            from: datasetIndex === 2 ? x - height / 2 : x - width / 2,
+            to: datasetIndex === 2 ? x + height / 2 : x + width / 2,
+          },
+          y: {
+            from: datasetIndex === 2 ? y - width / 2 : y - height,
+            to: datasetIndex === 2 ? y + width / 2 : y + height / 2,
+          },
           dataX: (dataset.data[index] as ScatterDataPoint).x,
           dataY: (dataset.data[index] as ScatterDataPoint).y,
           width,
           height,
           datasetIndex,
           index,
+          coordinate: dataset.data[index].coordinate,
+          rawData: dataset.data[index],
           direction: datasetIndex === 2 ? 'horizontal' : 'vertical',
         })
       })

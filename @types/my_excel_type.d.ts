@@ -49,7 +49,7 @@ export type DataSheetData = {
 }
 
 export type ResultSheetData = {
-  0: number
-  1: number
-  2: number
+  0: string
+  1: string
+  2: string
 }
