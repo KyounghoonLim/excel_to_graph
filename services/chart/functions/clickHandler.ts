@@ -29,22 +29,29 @@ export function clickHandler(event: ChartEvent, elements, chart: MyChart) {
   const dataY = (1 - mouseY / height) * scaleY + zoomBounds.y.min
 
   let found = false
+  let rangeX, rangeY
 
   for (const { dataX: x, dataY: y, datasetIndex, index, direction } of chart.$customScatterRects) {
     if (found) break
     switch (direction) {
       case 'vertical': {
-        const rangeX = [x - 50, x + 50]
-        const rangeY = [y, y + 250]
+        rangeX = [x - 50, x + 50]
+        rangeY = [y, y + 250]
 
         if (dataX >= rangeX[0] && dataX <= rangeX[1] && dataY >= rangeY[0] && dataY <= rangeY[1]) {
           found = true
-
           chart.tooltip.setActiveElements([{ datasetIndex, index }], { x, y })
         }
         break
       }
       case 'horizontal': {
+        rangeX = [x - 125, x + 1250]
+        rangeY = [y - 25, y + 25]
+
+        if (dataX >= rangeX[0] && dataX <= rangeX[1] && dataY >= rangeY[0] && dataY <= rangeY[1]) {
+          found = true
+          chart.tooltip.setActiveElements([{ datasetIndex, index }], { x, y })
+        }
         break
       }
     }

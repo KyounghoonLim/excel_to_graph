@@ -8,5 +8,6 @@ export function getGridOffset(data: DataSheetData[], index: number) {
   // 교차비율 //
   const width = (data[index] as DataSheetData)[3]
   const offset = data[0][5] * width * (index % graphStyleNum)
+
   return offset
 }

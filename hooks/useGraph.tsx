@@ -13,6 +13,7 @@ import { titleBackgroundPlugin } from 'services/chart/plugins/titlePlugin'
 import { getAnnotations } from 'services/chart/functions/getAnnotations'
 import { getMaxLength } from 'services/chart/functions/getMaxLength'
 import { clickHandler } from 'services/chart/functions/clickHandler'
+import { tooltipFooterCallback, tooltipLabelCallback } from 'services/chart/utils/tooltipCallback'
 
 Chart.register(annotaionPlugin)
 
@@ -29,6 +30,10 @@ export default function useGraph() {
         plugins: {
           tooltip: {
             position: 'custom',
+            callbacks: {
+              label: tooltipLabelCallback,
+              footer: tooltipFooterCallback,
+            },
           },
           annotation: {
             annotations,
