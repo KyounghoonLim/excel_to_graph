@@ -1,7 +1,7 @@
 'use client'
 
 import { filesContext } from 'providers/FilesProvider'
-import { useContext, useState } from 'react'
+import { useContext, useLayoutEffect, useState } from 'react'
 import { FileListItem } from './FileListItem'
 import FileIcon from 'icons/file-icon.svg'
 import CloseArrowIcon from 'icons/close-arrow-icon.svg'
@@ -10,6 +10,11 @@ import clsx from 'clsx'
 export function FileList() {
   const { fileObjects, selectedIndex } = useContext(filesContext)
   const [isShow, setIsShow] = useState<boolean>(true)
+
+  useLayoutEffect(() => {
+    if (selectedIndex === undefined || selectedIndex === null) return
+    else setIsShow(false)
+  }, [selectedIndex])
 
   return (
     <>
