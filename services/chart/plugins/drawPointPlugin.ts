@@ -29,8 +29,8 @@ export const drawPointPlugin: Plugin = {
         switch (datasetIndex) {
           // 세 번째 데이터셋은 가로축 기준 //
           case 2: {
-            ctx.fillRect(x, y - width / 2, height, width)
-            ctx.strokeRect(x, y - width / 2, height, width)
+            ctx.fillRect(x - height / 2, y - width / 2, height, width)
+            ctx.strokeRect(x - height / 2, y - width / 2, height, width)
             break
           }
           // 나머지는 세로축 기준 //
