@@ -30,7 +30,7 @@ export const MyErrorComponent: ErrorComponent = function ({ error, reset }) {
         </span>
         <button
           className="px-4 py-2 rounded-lg bg-black text-white hover:bg-[#000000dd] cursor-pointer"
-          onClick={reset}
+          onClick={() => location.reload()}
         >
           새로고침
         </button>

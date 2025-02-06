@@ -1,7 +1,7 @@
 'use client'
 
 import { Chart } from 'chart.js/auto'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import zoomPlugin from 'chartjs-plugin-zoom'
 import { tickCallback } from 'services/chart/utils/tickCallback'
 import { MyExcelDataType } from 'providers/ExcelProvider'
@@ -16,11 +16,14 @@ import { tooltipFooterCallback, tooltipLabelCallback } from 'services/chart/util
 import { getDataset } from 'services/chart/functions/getDataset'
 import { drawDistancePlugin } from 'services/chart/plugins/drawDistancePlugin'
 import { MyChart } from 'services/chart/@types/MyChart'
+import { exportChartToPDF } from 'services/pdf/canvasToPdf'
 
 Chart.register(annotaionPlugin)
 Chart.register(drawDistancePlugin)
 
 export function useChart() {
+  const [chart, setChart] = useState<MyChart>()
+
   const initChart = useCallback((canvas: HTMLCanvasElement, title?: string, excelData?: MyExcelDataType) => {
     const maxLength = getMaxLength(excelData?.data)
     const annotations = getAnnotations(excelData?.data)
@@ -115,11 +118,19 @@ export function useChart() {
 
     chart.$excelData = excelData
     chart.$graphStyle = excelData.data[1][4]
+    chart.$title = title.split('.')[0]
 
     console.log(chart)
 
-    return chart
+    setChart(chart)
   }, [])
 
-  return { initChart }
+  const chartToPdf = useCallback(() => {
+    if (!chart) return
+    else {
+      exportChartToPDF(chart)
+    }
+  }, [chart])
+
+  return { initChart, chartToPdf, chart }
 }

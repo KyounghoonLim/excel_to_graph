@@ -4,6 +4,7 @@ import { MyExcelDataType } from 'providers/ExcelProvider'
 import { FixedLengthArray } from 'utils/FixedLengthArray'
 
 export interface MyChart extends Chart {
+  $title?: string
   $excelData?: MyExcelDataType
   $customScatterRects?: Array<ScatterRect>
   $relativeDataset?: {
