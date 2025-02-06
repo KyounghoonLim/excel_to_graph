@@ -9,6 +9,7 @@ export function drawArrow(
     labelX: number
     labelY: number
     text: string
+    font?: string
   }
 ) {
   ctx.beginPath()
@@ -18,7 +19,6 @@ export function drawArrow(
 
   ctx.save()
   ctx.strokeStyle = 'black'
-  ctx.lineWidth = 1
   //starting path of the arrow from the start square to the end square
   //and drawing the stroke
   ctx.beginPath()

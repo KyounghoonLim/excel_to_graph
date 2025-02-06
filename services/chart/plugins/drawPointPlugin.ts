@@ -1,12 +1,11 @@
 import { Plugin, ScatterDataPoint } from 'chart.js'
-import { MyChart } from '../@types/MyChart'
+import { MyChart, ScatterRect } from '../@types/MyChart'
 
 export const drawPointPlugin: Plugin = {
   id: 'customDrawPointPlugin',
   beforeDraw: (chart: MyChart) => {
     const ctx = chart.ctx
     const datasets = chart.data.datasets
-    const { result } = chart.$excelData
 
     if (!chart.$customScatterRects) {
       chart.$customScatterRects = [] // ✅ 차트 객체에 데이터 저장 (초기화)
@@ -14,52 +13,78 @@ export const drawPointPlugin: Plugin = {
     chart.$customScatterRects.length = 0 // ✅ 매 프레임마다 최신 데이터 유지
     ctx.save()
 
-    const zoomLevel = chart.getZoomLevel()
-    const baseSize = (chart.canvas.width * (2.5 / 1344)) / chart.options.devicePixelRatio
-    const width = baseSize * zoomLevel * 2
-    const height = baseSize * zoomLevel * 2.5
+    const tickSize = getPixelSizeForSquare(chart)
+    const width = tickSize.width // 차트 상에서 잘 보이기 위함으로 중요하지 않음
+    const height = tickSize.height // 차트에서 실제로 250 만큼의 거리. 용접부의 가로, 세로에 따라 회전해서 이 녀석으로 기록
 
     datasets.forEach((dataset, datasetIndex) => {
       ctx.fillStyle = dataset.backgroundColor as string
       ctx.strokeStyle = dataset.borderColor as string
 
       const meta = chart.getDatasetMeta(datasetIndex)
-
+      // console.log(meta)
       meta.data.forEach(({ x, y }, index) => {
+        let tickX, tickY
         switch (datasetIndex) {
           // 세 번째 데이터셋은 가로축 기준 //
           case 2: {
-            ctx.fillRect(x - height / 2, y - width / 2, height, width)
-            ctx.strokeRect(x - height / 2, y - width / 2, height, width)
+            tickX = width * 5
+            tickY = height * 3.5
+            ctx.fillRect(x - tickX / 2, y - tickY / 2, tickX, tickY)
+            ctx.strokeRect(x - tickX / 2, y - tickY / 2, tickX, tickY)
             break
           }
           // 나머지는 세로축 기준 //
           default: {
-            ctx.fillRect(x - width / 2, y - height, width, height)
-            ctx.strokeRect(x - width / 2, y - height, width, height)
+            tickX = width * 4
+            tickY = height * 5
+            ctx.fillRect(x - tickX / 2, y - tickY, tickX, tickY)
+            ctx.strokeRect(x - tickX / 2, y - tickY, tickX, tickY)
           }
         }
-        chart.$customScatterRects.push({
+        const rect: ScatterRect = {
           x: {
-            from: datasetIndex === 2 ? x - height / 2 : x - width / 2,
-            to: datasetIndex === 2 ? x + height / 2 : x + width / 2,
+            from: datasetIndex === 2 ? x - tickX / 2 : x - tickX / 2,
+            to: datasetIndex === 2 ? x + tickX / 2 : x + tickX / 2,
           },
           y: {
-            from: datasetIndex === 2 ? y - width / 2 : y - height,
-            to: datasetIndex === 2 ? y + width / 2 : y + height / 2,
+            from: datasetIndex === 2 ? y - tickY / 2 : y - tickY,
+            to: datasetIndex === 2 ? y + tickY / 2 : y,
           },
           dataX: (dataset.data[index] as ScatterDataPoint).x,
           dataY: (dataset.data[index] as ScatterDataPoint).y,
-          width,
-          height,
+          width: tickX,
+          height: tickY,
           datasetIndex,
           index,
           coordinate: dataset.data[index].coordinate,
           rawData: dataset.data[index],
           direction: datasetIndex === 2 ? 'horizontal' : 'vertical',
-        })
+          align: dataset.data[index].align,
+          tickSize,
+        }
+
+        chart.$customScatterRects.push(rect)
       })
+
       ctx.restore()
     })
   },
+}
+
+function getPixelSizeForSquare(chart, size = 50) {
+  const xScale = chart.scales['x']
+  const yScale = chart.scales['y']
+  if (!xScale || !yScale) return null
+
+  // 데이터 값 기준 size 만큼 이동한 후 픽셀 거리 계산
+  const xStart = xScale.getPixelForValue(0)
+  const xEnd = xScale.getPixelForValue(size)
+  const yStart = yScale.getPixelForValue(0)
+  const yEnd = yScale.getPixelForValue(size)
+
+  return {
+    width: Math.abs(xEnd - xStart) / window.devicePixelRatio,
+    height: Math.abs(yEnd - yStart) / window.devicePixelRatio,
+  }
 }

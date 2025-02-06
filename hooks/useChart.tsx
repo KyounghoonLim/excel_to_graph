@@ -82,7 +82,7 @@ export function useChart() {
           x: {
             ticks: {
               display: true,
-              maxTicksLimit: 25,
+              maxTicksLimit: 50,
               callback: tickCallback,
             },
             grid: {
@@ -95,7 +95,7 @@ export function useChart() {
           y: {
             ticks: {
               display: true,
-              maxTicksLimit: 25,
+              maxTicksLimit: 50,
               callback: tickCallback,
             },
             grid: {
@@ -115,6 +115,8 @@ export function useChart() {
 
     chart.$excelData = excelData
     chart.$graphStyle = excelData.data[1][4]
+
+    console.log(chart)
 
     return chart
   }, [])

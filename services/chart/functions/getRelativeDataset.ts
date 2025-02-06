@@ -43,28 +43,32 @@ export function getRelativeDataset(chart: MyChart) {
 
     for (let i = 0; i < resultData.length; i++) {
       for (let j = 0; j < resultData[i].length; j++) {
-        const item = resultData[i][j].split('#').map(Number)
+        try {
+          const item = resultData[i][j].split('#').map(Number)
 
-        switch (item.length) {
-          // 가로축일 경우 //
-          case 2: {
-            const [floor, _left] = item
-            const shell = Math.floor((_left * tick) / width)
-            const left = _left % (width / tick)
+          switch (item.length) {
+            // 가로축일 경우 //
+            case 2: {
+              const [floor, _left] = item
+              const shell = Math.floor((_left * tick) / width)
+              const left = (_left - 1) % (width / tick)
 
-            horizontalDataset[floor - 1][shell][left] = rects.find((r) => {
-              if (r.datasetIndex === j && r.index === i) return r
-            })
-            break
+              horizontalDataset[floor - 1][shell][left] = rects.find((r) => {
+                if (r.datasetIndex === j && r.index === i) return r
+              })
+              break
+            }
+            // 이외의 경우 //
+            default: {
+              const [floor, left, top] = item
+              verticalDataset[floor - 1][left - 1][top - 1] = rects.find((r) => {
+                if (r.datasetIndex === j && r.index === i) return r
+              })
+              break
+            }
           }
-          // 이외의 경우 //
-          default: {
-            const [floor, left, top] = item
-            verticalDataset[floor - 1][left - 1][top - 1] = rects.find((r) => {
-              if (r.datasetIndex === j && r.index === i) return r
-            })
-            break
-          }
+        } catch {
+          // pass
         }
       }
     }

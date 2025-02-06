@@ -7,8 +7,8 @@ export interface MyChart extends Chart {
   $excelData?: MyExcelDataType
   $customScatterRects?: Array<ScatterRect>
   $relativeDataset?: {
-    verticalDataset: FixedLengthArray<FixedLengthArray<FixedLengthArray<ScatterRect | undefined>>>
-    horizontalDataset: FixedLengthArray<FixedLengthArray<ScatterRect | undefined>>
+    verticalDataset: FixedLengthArray<FixedLengthArray<FixedLengthArray<ScatterRect>>>
+    horizontalDataset: FixedLengthArray<FixedLengthArray<FixedLengthArray<ScatterRect>>>
   }
   $graphStyle: GraphStyleType
 }
@@ -28,7 +28,17 @@ export type ScatterRect = {
   height: number
   datasetIndex: number
   index: number
+  direction: 'vertical' | 'horizontal'
   coordinate?: number[]
   rawData?: unknown
-  direction: 'vertical' | 'horizontal'
+  distance?: number
+  align?: {
+    align: 'left' | 'right'
+    side: 'upside' | 'downside'
+    leanIndex?: number
+  }
+  tickSize?: {
+    width: number
+    height: number
+  }
 }

@@ -8,6 +8,6 @@ export class ExcelReader {
   }
 
   sheetToJson(sheet: WorkSheet): Array<unknown> {
-    return utils.sheet_to_json(sheet, { header: 1 })
+    return utils.sheet_to_json(sheet, { header: 1, blankrows: false })
   }
 }
