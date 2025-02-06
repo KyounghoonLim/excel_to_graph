@@ -22,7 +22,9 @@ export function useFile(maxLength: number = 5) {
   const addFile = useCallback(
     async (file: File) => {
       const buffer = await fileUploadHelper.uploadFileAsBlob(file)
-      setFileObjects((temp) => temp.arrayPushedItem({ file, buffer }))
+      if (buffer) {
+        setFileObjects((temp) => temp.arrayPushedItem({ file, buffer }))
+      }
     },
     [fileUploadHelper]
   )

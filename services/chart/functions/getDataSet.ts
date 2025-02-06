@@ -118,7 +118,7 @@ function getAlign(coordinate: Array<number>, dataset: DataSheetData[]) {
     }
   }
 
-  floor === 4 && console.log(coordinate, index, left, right, isRight, flag)
+  // floor === 4 && console.log(coordinate, index, left, right, isRight, flag)
 
   if (index - left > right - index) {
     alignObject.align = 'right'

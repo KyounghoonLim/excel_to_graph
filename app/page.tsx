@@ -1,3 +1,5 @@
+'use client'
+
 import { MyErrorComponent } from 'components/error/MyErrorComponent'
 import { FileListContainer } from 'components/file/FileListContainer'
 import { ChartContainer } from 'components/chart/ChartContainer'

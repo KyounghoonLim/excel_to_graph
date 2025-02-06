@@ -83,8 +83,9 @@ function getPixelSizeForSquare(chart, size = 50) {
   const yStart = yScale.getPixelForValue(0)
   const yEnd = yScale.getPixelForValue(size)
 
+  console.log(window.devicePixelRatio)
   return {
-    width: Math.abs(xEnd - xStart) / window.devicePixelRatio,
-    height: Math.abs(yEnd - yStart) / window.devicePixelRatio,
+    width: Math.abs(xEnd - xStart),
+    height: Math.abs(yEnd - yStart),
   }
 }

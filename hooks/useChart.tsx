@@ -1,11 +1,9 @@
 'use client'
 
 import { Chart } from 'chart.js/auto'
-import { useCallback, useState } from 'react'
-import zoomPlugin from 'chartjs-plugin-zoom'
+import { useCallback, useEffect, useState } from 'react'
 import { tickCallback } from 'services/chart/utils/tickCallback'
 import { MyExcelDataType } from 'providers/ExcelProvider'
-import annotaionPlugin from 'chartjs-plugin-annotation'
 import { drawPointPlugin } from 'services/chart/plugins/drawPointPlugin'
 import { backgroundPlugin } from 'services/chart/plugins/backgroundPlugin'
 import { titleBackgroundPlugin } from 'services/chart/plugins/titlePlugin'
@@ -17,6 +15,7 @@ import { getDataset } from 'services/chart/functions/getDataset'
 import { drawDistancePlugin } from 'services/chart/plugins/drawDistancePlugin'
 import { MyChart } from 'services/chart/@types/MyChart'
 import { exportChartToPDF } from 'services/pdf/canvasToPdf'
+import annotaionPlugin from 'chartjs-plugin-annotation'
 
 Chart.register(annotaionPlugin)
 Chart.register(drawDistancePlugin)
@@ -30,14 +29,7 @@ export function useChart() {
 
     const chart: MyChart = new Chart(canvas, {
       type: 'scatter',
-      plugins: [
-        zoomPlugin,
-        annotaionPlugin,
-        drawPointPlugin,
-        drawDistancePlugin,
-        backgroundPlugin,
-        titleBackgroundPlugin,
-      ],
+      plugins: [annotaionPlugin, drawPointPlugin, drawDistancePlugin, backgroundPlugin, titleBackgroundPlugin],
       options: {
         responsive: true,
         plugins: {
@@ -120,8 +112,6 @@ export function useChart() {
     chart.$graphStyle = excelData.data[1][4]
     chart.$title = title.split('.')[0]
 
-    console.log(chart)
-
     setChart(chart)
   }, [])
 
@@ -131,6 +121,13 @@ export function useChart() {
       exportChartToPDF(chart)
     }
   }, [chart])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined')
+      import('chartjs-plugin-zoom').then((plugin) => {
+        Chart.register(plugin.default)
+      })
+  }, [])
 
   return { initChart, chartToPdf, chart }
 }

@@ -16,7 +16,7 @@ export function ExcelChart() {
   const selectedFile = useMemo(() => fileObjects[selectedIndex]?.file, [fileObjects, selectedIndex])
 
   const downloadFile = useCallback(() => {
-    if (window.confirm('파일을 pdf 로 다운로드 하시겠습니까?')) {
+    if (window?.confirm('파일을 pdf 로 다운로드 하시겠습니까?')) {
       chartToPdf()
     }
   }, [chartToPdf])

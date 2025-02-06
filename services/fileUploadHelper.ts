@@ -10,6 +10,7 @@ export class FileUploadHelper {
   uploadFile(_file: File) {
     if (!this.filterFile(_file)) {
       alert('엑셀 파일만 업로드가 가능합니다.')
+      return
     } else {
       return _file
     }
@@ -18,6 +19,7 @@ export class FileUploadHelper {
   async uploadFileAsBlob(_file: File) {
     if (!this.filterFile(_file)) {
       alert('엑셀 파일만 업로드가 가능합니다.')
+      return
     }
 
     try {

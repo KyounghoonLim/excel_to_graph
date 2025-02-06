@@ -3,7 +3,7 @@
 import { ErrorComponent } from 'next/dist/client/components/error-boundary'
 import { useCallback } from 'react'
 
-export const MyErrorComponent: ErrorComponent = function ({ error, reset }) {
+export const MyErrorComponent: ErrorComponent = function ({ error }) {
   const clickHandler = useCallback(() => {
     if (window.confirm('엑셀 파일 예시를 다운로드 하시겠습니까?')) {
       const link = document.createElement('a')

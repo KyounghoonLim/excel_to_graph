@@ -11,7 +11,7 @@ export interface MyChart extends Chart {
     verticalDataset: FixedLengthArray<FixedLengthArray<FixedLengthArray<ScatterRect>>>
     horizontalDataset: FixedLengthArray<FixedLengthArray<FixedLengthArray<ScatterRect>>>
   }
-  $graphStyle: GraphStyleType
+  $graphStyle?: GraphStyleType
 }
 
 export type ScatterRect = {

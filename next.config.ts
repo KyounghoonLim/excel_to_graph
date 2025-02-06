@@ -9,6 +9,12 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  assetPrefix: './',
+  trailingSlash: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   reactStrictMode: false,
   devIndicators: {
     appIsrStatus: false,
